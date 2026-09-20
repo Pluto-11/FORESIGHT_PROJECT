@@ -89,22 +89,22 @@ if page == "Home":
 
     st.divider()
 
-    st.subheader("🤖 Demand Forecasting Model")
+    # st.subheader("🤖 Demand Forecasting Model")
 
-    col1, col2, col3, col4 = st.columns(4)
+    # col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("Model", "HistGradientBoosting")
-    col2.metric("MAE", "2.85")
-    col3.metric("RMSE", "3.69")
-    col4.metric("WAPE", "23.49%")
+    # col1.metric("Model", "HistGradientBoosting")
+    # col2.metric("MAE", "2.85")
+    # col3.metric("RMSE", "3.69")
+    # col4.metric("WAPE", "23.49%")
 
-    st.caption(
-        "Evaluated on a chronological holdout period from "
-        "2025-08-09 to 2025-12-31. The model achieved a 24.70% "
-        "WAPE improvement over the Seasonal Naive baseline."
-    )
+    # st.caption(
+    #     "Evaluated on a chronological holdout period from "
+    #     "2025-08-09 to 2025-12-31. The model achieved a 24.70% "
+    #     "WAPE improvement over the Seasonal Naive baseline."
+    # )
 
-    st.divider()
+    # st.divider()
 
     st.subheader("Platform Modules")
 
