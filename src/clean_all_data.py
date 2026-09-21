@@ -6,10 +6,10 @@ project_folder = Path(__file__).resolve().parent.parent
 data_folder = project_folder / "data"
 
 # Load datasets
-calendar = pd.read_csv(data_folder / "calendar (1).csv")
-inventory = pd.read_csv(data_folder / "inventory_snapshots (1).csv")
-sales = pd.read_csv(data_folder / "sales_daily (1).csv")
-sku_master = pd.read_csv(data_folder / "sku_master (1).csv")
+calendar = pd.read_csv(data_folder / "calendar.csv")
+inventory = pd.read_csv(data_folder / "inventory_snapshots.csv")
+sales = pd.read_csv(data_folder / "sales_daily.csv")
+sku_master = pd.read_csv(data_folder / "sku_master.csv")
 
 print("DATASETS LOADED SUCCESSFULLY")
 
