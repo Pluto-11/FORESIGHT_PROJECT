@@ -8,4 +8,3 @@ statsmodels
 jupyter
 openpyxl
 plotly
-streamlit
