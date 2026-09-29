@@ -6,6 +6,115 @@ st.set_page_config(
     page_icon="📦",
     layout="wide"
 )
+
+        
+        
+
+# ---------------- LOGIN SYSTEM ----------------
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+
+    st.markdown(
+        """
+<style>
+.login-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.login-subtitle {
+    text-align: center;
+    font-size: 17px;
+    color: #64748B;
+    margin-bottom: 35px;
+}
+
+div[data-testid="stForm"] {
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-radius: 16px;
+    padding: 30px;
+    background-color: transparent;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+div[data-testid="stForm"] h3 {
+    font-size: 24px;
+}
+
+div[data-testid="stFormSubmitButton"] button {
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 600;
+}
+</style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        '<div class="login-title">📦 FORESIGHT</div>',
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        '<div class="login-subtitle">'
+        'Demand & Inventory Intelligence Platform'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
+    left, center, right = st.columns([1, 1.2, 1])
+
+    with center:
+
+        with st.form("login_form"):
+
+            st.subheader("🔐 Welcome Back")
+            st.caption("Log in to access your dashboard.")
+
+            username = st.text_input("Username")
+
+            password = st.text_input(
+                "Password",
+                type="password"
+            )
+
+            login_button = st.form_submit_button("Login")
+
+            if login_button:
+
+                if (
+                    username == st.secrets["auth"]["username"]
+                    and password == st.secrets["auth"]["password"]
+                ):
+                    st.session_state.authenticated = True
+                    st.rerun()
+
+                else:
+                    st.error("Invalid username or password.")
+
+    st.stop()
+
+
+# ---------------- LOGOUT BUTTON ----------------
+
+if st.session_state.authenticated:
+
+    if st.sidebar.button("Logout"):
+        st.session_state.authenticated = False
+        st.rerun()
+        
+        
+        
+        
+        
+        
+        
 st.markdown(
     """
     <style>
