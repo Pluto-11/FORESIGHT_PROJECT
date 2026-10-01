@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 st.set_page_config(
     page_title="FORESIGHT",
@@ -9,6 +10,25 @@ st.set_page_config(
 
         
         
+
+# Authentication credentials
+auth_username = os.getenv("AUTH_USERNAME")
+auth_password = os.getenv("AUTH_PASSWORD")
+
+# Local development fallback
+if not auth_username or not auth_password:
+    try:
+        auth_username = st.secrets["auth"]["username"]
+        auth_password = st.secrets["auth"]["password"]
+    except Exception:
+        auth_username = ""
+        auth_password = ""
+
+
+
+
+
+
 
 # ---------------- LOGIN SYSTEM ----------------
 
@@ -88,10 +108,11 @@ div[data-testid="stFormSubmitButton"] button {
 
             if login_button:
 
-                if (
-                    username == st.secrets["auth"]["username"]
-                    and password == st.secrets["auth"]["password"]
-                ):
+                # if (
+                #     username == st.secrets["auth"]["username"]
+                #     and password == st.secrets["auth"]["password"]
+                # ):
+                if username == auth_username and password == auth_password:
                     st.session_state.authenticated = True
                     st.rerun()
 
@@ -476,7 +497,8 @@ elif page == "Inventory Dashboard":
 
     st.dataframe(
         inventory_display,
-        use_container_width=True,
+        # use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 elif page == "Risk Dashboard":
@@ -529,7 +551,8 @@ elif page == "Risk Dashboard":
 
     st.dataframe(
         attention,
-        use_container_width=True,
+        # use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 
@@ -624,10 +647,13 @@ elif page == "Product Details":
             sku_inventory["Risk_Category"]
         ]
     })
+    
+    inventory_details["Value"] = inventory_details["Value"].astype(str)
 
     st.dataframe(
         inventory_details,
-        use_container_width=True,
+        # use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 
@@ -726,6 +752,7 @@ elif page == "Executive Summary":
 
     st.dataframe(
         high_risk_products,
-        use_container_width=True,
+        # use_container_width=True,
+        width="stretch",
         hide_index=True
     )
