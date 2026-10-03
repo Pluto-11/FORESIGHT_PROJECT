@@ -8,3 +8,5 @@ statsmodels
 jupyter
 openpyxl
 plotly
+streamlit
+joblib
