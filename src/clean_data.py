@@ -3,8 +3,8 @@ from pathlib import Path
 
 project_folder = Path(__file__).resolve().parent.parent
 data_folder = project_folder / "data"
-# ----sales only----
-sales_file = data_folder / "sales_daily.csv"
+
+sales_file = data_folder / "sales_daily (1).csv"
 sales = pd.read_csv(sales_file)
 
 print("Original rows:", len(sales))

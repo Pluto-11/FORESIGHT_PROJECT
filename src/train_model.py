@@ -150,3 +150,6 @@ print(model_path)
 
 print("\nFeature list saved to:")
 print(feature_path)
+
+print("Train rows:", len(train_df))
+print("Test rows:", len(test_df))
